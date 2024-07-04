@@ -1,23 +1,22 @@
 #!/usr/bin/python3
-"""Start flask app expoisn / and /hbnb."""
-from flask import Flask
 
+"""
+Starts a flask app
+"""
+
+from flask import Flask
 app = Flask(__name__)
 
 
 @app.route('/', strict_slashes=False)
-def index():
-    """Print hello HBNB."""
-
-    return 'Hello HBNB'
-
+def hello_hbnb():
+	"""displays Hello HBNB"""
+	return 'Hello HBNB!'
 
 @app.route('/hbnb', strict_slashes=False)
 def hbnb():
-    """Print HBNB."""
+        """displays Hello HBNB"""
+        return 'HBNB'
 
-    return 'HBNB'
-
-
-if __name__ == '__main__':
-    app.run()
+if __name__ ==  '__main__':
+	app.run(host='0.0.0.0', port='5000')

@@ -1,45 +1,41 @@
 #!/usr/bin/python3
-"""Flask app."""
-from flask import Flask
 
+"""
+Starts a flask app
+"""
+
+from flask import Flask
 app = Flask(__name__)
 
 
 @app.route('/', strict_slashes=False)
-def index():
-    """Print hello HBNB."""
-
-    return 'Hello HBNB'
-
+def n_hello():
+	"""displays Hello HBNB"""
+	return 'Hello HBNB!'
 
 @app.route('/hbnb', strict_slashes=False)
-def hbnb():
-    """Print HBNB."""
-
-    return 'HBNB'
-
+def n_hbnb():
+        """displays Hello HBNB"""
+        return 'HBNB'
 
 @app.route('/c/<text>', strict_slashes=False)
-def c(text):
-    """Display C followed by the value of text."""
+def n_C(text):
+	"""displays c followed text"""
+	text = text.replace("_", " ")
+	return 'C {}'.format(str(text))
 
-    return f'C {text.replace("_", " ")}'
-
-
-@app.route('/python/', defaults={"text": "is cool"}, strict_slashes=False)
+@app.route('/python/', defaults={'text': 'is cool'}, strict_slashes=False)
 @app.route('/python/<text>', strict_slashes=False)
-def python(text):
-    """Display Python followed by the value of text."""
-
-    return f'Python {text.replace("_", " ")}'
-
+def n_python_is_cool(text):
+        """displays python followed by text"""
+        text = text.replace("_", " ")
+        return 'Python {}'.format(text)
 
 @app.route('/number/<int:n>', strict_slashes=False)
-def number(n):
-    """Display <n> is a number if its a number."""
+def n(n):
+        """displays python followed by text"""
+        return '{} is a number'.format(n)
 
-    return f'{n} is a number'
 
-
-if __name__ == '__main__':
-    app.run()
+if __name__ ==  '__main__':
+	app.run(host='0.0.0.0', port='5000')
